@@ -1,5 +1,6 @@
 package com.dosdam.proxecto.race;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
@@ -8,9 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.os.Handler;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends Activity
 {
 
     @Override
@@ -27,10 +29,7 @@ public class MainActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen); //en el main cargamos el layout con la imagen del coche (splashscreen)
 
-
         /*Creamos un nuevo hilo para el juego y sus recursos*/
-
-
         new Handler().postDelayed(new Thread()
         {
             @Override
