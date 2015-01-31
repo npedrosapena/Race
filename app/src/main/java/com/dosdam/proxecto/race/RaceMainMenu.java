@@ -1,6 +1,7 @@
 package com.dosdam.proxecto.race;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -18,6 +19,20 @@ public class RaceMainMenu extends Activity
         setContentView(R.layout.activity_main); //en el main cargamos el layout con la imagen del coche (splashscreen)
 
         final RaceEngine engine = new RaceEngine();
+
+
+        /* Inicio de musica en background */
+        RaceEngine.musicThread=new Thread(){
+            public void run()
+            {
+                Intent bgMusic=new Intent(getApplicationContext(),RaceMusic.class); //llamamos a la clase musica
+                startService(bgMusic); //la lanzamos
+                RaceEngine.context=getApplicationContext();
+            }
+        };
+
+        RaceEngine.musicThread.start(); //lanzamos la musica!!!
+
 
          /*vamos a instancias los botones para poder darles propiedades*/
         ImageButton start= (ImageButton)findViewById(R.id.btnStart);
