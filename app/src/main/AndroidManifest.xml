@@ -21,6 +21,8 @@
                   android:screenOrientation="landscape"
              />
 
+        <service android:name=".RaceMusic"></service>
+
 
     </application>
 
