@@ -13,7 +13,8 @@ import android.util.Log;
 public class RaceMusic extends Service
 {
     public static boolean isRunning=false;
-    MediaPlayer player; //instanciamos un objeto tipo mediaplayer para reproducir audio
+    static MediaPlayer player; //instanciamos un objeto tipo mediaplayer para reproducir audio
+    private static Context context;
 
 
     @Override
@@ -26,16 +27,16 @@ public class RaceMusic extends Service
     public void onCreate()
     {
         super.onCreate();
-
-        setMusicOptions(this,RaceEngine.LOOP_BACKGROUND_MUSIC,RaceEngine.L_VOLUME,RaceEngine.R_VOLUME,RaceEngine.SPLASH_SCREEN_MUSIC); //le pasamos los valores por defecto establecidos en el motor del juego
+        context=this;
+        setMusicOptions(RaceEngine.LOOP_BACKGROUND_MUSIC,RaceEngine.R_VOLUME,RaceEngine.L_VOLUME,RaceEngine.SPLASH_SCREEN_MUSIC); //le pasamos los valores por defecto establecidos en el motor del juego
     }
 
     //establecemos los valores por defecto para el reproductor de musica
-    public void setMusicOptions(Context context, boolean isLooped,int lVolume, int rVolume, int soundFile)
+    public void setMusicOptions(boolean isLooped,int rVolume, int lVolume, int soundFile)
     {
         player=MediaPlayer.create(context,soundFile); //le pasamos el "hilo" o conenedor que va a manejar el audio y el puntero al archivo de audio
         player.setLooping(isLooped); //reproduccion en bucle
-        player.setVolume(lVolume,rVolume);
+        player.setVolume(rVolume,lVolume);
     }
 
     public int onStartCommand(Intent intent, int flags,int startId)
