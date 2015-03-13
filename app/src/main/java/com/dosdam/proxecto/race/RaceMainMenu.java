@@ -12,13 +12,14 @@ import android.widget.ImageButton;
 
 public class RaceMainMenu extends Activity
 {
+    final RaceEngine engine = new RaceEngine();
 
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //en el main cargamos el layout con la imagen del coche (splashscreen)
+        RaceEngine.context=getApplicationContext();
 
-        final RaceEngine engine = new RaceEngine();
 
 
         /* Inicio de musica en background */
@@ -27,7 +28,7 @@ public class RaceMainMenu extends Activity
             {
                 Intent bgMusic=new Intent(getApplicationContext(),RaceMusic.class); //llamamos a la clase musica
                 startService(bgMusic); //la lanzamos
-                RaceEngine.context=getApplicationContext();
+                //RaceEngine.context=getApplicationContext();
             }
         };
 
@@ -53,6 +54,8 @@ public class RaceMainMenu extends Activity
             public void onClick(View v)
             {
                 /* Empieza el juego*/
+                Intent game=new Intent(getApplicationContext(),RaceGame.class);
+                RaceMainMenu.this.startActivity(game);
             }
         });
 
