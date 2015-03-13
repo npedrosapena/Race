@@ -35,7 +35,7 @@ public class RaceBackground
     private float texture[]={
             0.0f,0.0f,
             1.0f,0f,
-            1,1.0f,
+            1f,1.0f,
             0f,1f
     }; //indices en los que nuestra textura se encuadra con el cuadrado creado con los vertices[] solo tiene X e Y
 
@@ -64,7 +64,7 @@ public class RaceBackground
         textureBuffer.position(0);
 
 
-        byteBuf=ByteBuffer.allocateDirect(indices.length);
+        indexBuffer=ByteBuffer.allocateDirect(indices.length);
         indexBuffer.put(indices);
         indexBuffer.position(0);
     };
@@ -93,7 +93,7 @@ public class RaceBackground
                 imagestream=null;
             }catch(Exception ex)
             {
-                Log.e("Error limpiando memoria imagen",ex.getMessage().toString());
+                Log.e("Error limpiar mem. img",ex.getMessage().toString());
             }
 
             gl.glGenTextures(1,textures,0); //genera un puntero a las texturas (numero de nombres para la textura que tiene que generar para este caso es 1, array con los valores de la textura, numero de ultima posicion del array de la que necesitamos los elementos)
