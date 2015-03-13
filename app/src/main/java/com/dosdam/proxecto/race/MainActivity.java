@@ -29,6 +29,8 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen); //en el main cargamos el layout con la imagen del coche (splashscreen)
 
+        RaceEngine.context = this;
+
         /*Creamos un nuevo hilo para el juego y sus recursos*/
         new Handler().postDelayed(new Thread()
         {
